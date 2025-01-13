@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Raspberry_Pi_OS_Logo.png" alt="raspberrypi-logo" width="200"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Raspberry_Pi_OS_Logo.png" alt="raspberrypi-logo" width="500"/>
 </p>
 
 # Fully Automate ETL Script on Raspberry Pi OS
