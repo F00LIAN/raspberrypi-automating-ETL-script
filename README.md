@@ -72,7 +72,7 @@ chmod +x ~/scripts/auto_etl.sh
 
 ### 📂 Create the Service File
 
-![SystemD Configuration](![image](https://github.com/user-attachments/assets/3f350eb6-4f0e-490f-a19c-614257015847)
+![image](https://github.com/user-attachments/assets/3f350eb6-4f0e-490f-a19c-614257015847)
 
 Open the service file for editing:
 
