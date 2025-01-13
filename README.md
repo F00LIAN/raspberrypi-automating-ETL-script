@@ -41,8 +41,7 @@ Automate your ETL (Extract, Transform, Load) processes seamlessly on Raspberry P
 ## 🔐 SSH into Raspberry Pi
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8c3548b9-179d-482a-b72b-3ab2a6cc2c25
-" height="80%" width="80%" alt="SSH into device over LAN"/>
+  <img src="https://github.com/user-attachments/assets/8c3548b9-179d-482a-b72b-3ab2a6cc2c25" height="80%" width="80%" alt="SSH into device over LAN"/>
 </p>
 
 Begin by connecting to your Raspberry Pi via SSH over your local network. Ensure that SSH is enabled and that you can successfully log in to your device. This remote access is crucial for managing and deploying your ETL scripts without needing a direct monitor or keyboard connection.
@@ -50,15 +49,13 @@ Begin by connecting to your Raspberry Pi via SSH over your local network. Ensure
 ## 📄 Create ETL Automation Script and Shell Command. Copy and Paste into RaspberryPi
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f3499e92-a721-4005-9657-5d50e4e5541c
-" height="80%" width="80%" alt="Script Development in VSCode"/>
+  <img src="https://github.com/user-attachments/assets/f3499e92-a721-4005-9657-5d50e4e5541c" height="80%" width="80%" alt="Script Development in VSCode"/>
 </p>
 
 Develop your ETL automation script using VIM or your preferred text editor. This script will handle data extraction, transformation, and loading processes. Copy and paste the entire project folder into the RaspberryPi. Ensure the script has executable permissions and is tested manually before integrating it with the RaspberryPi.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/80c57cd6-5ba1-44c4-95e9-4d60f043e1a8
-" height="80%" width="80%" alt="Script Development in VIM"/>
+  <img src="https://github.com/user-attachments/assets/80c57cd6-5ba1-44c4-95e9-4d60f043e1a8" height="80%" width="80%" alt="Script Development in VIM"/>
 </p>
 
 Add a shell command to initiate on the raspberrypi for when we setup the automation service. 
