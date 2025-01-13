@@ -1,215 +1,222 @@
 <p align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Raspberry_Pi_OS_Logo.png" alt="raspberrypi-logo"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Raspberry_Pi_OS_Logo.png" alt="raspberrypi-logo" width="200"/>
 </p>
 
-# Fully Automate System Configuration on Raspberry Pi OS
+# Fully Automate ETL Script on Raspberry Pi OS
 
-This tutorial guides you through setting up an automated system configuration on Raspberry Pi OS using systemd services and timers. This approach offers a cost-effective alternative to relying on virtual machines or cloud resources for continuous automation tasks.<br />
+Automate your ETL (Extract, Transform, Load) processes seamlessly on Raspberry Pi OS using systemd services and timers. This project provides a cost-effective and efficient solution for continuous data automation tasks without relying on virtual machines or cloud resources.
 
-## Video Demonstration
+## 📹 Video Demonstration
 
-- ### [YouTube: Automate System Updates on Raspberry Pi](https://www.youtube.com/watch?v=K026myVD4og)
+- ### [YouTube: Automate Python ETL Script on Raspberry Pi](https://www.youtube.com/watch?v=K026myVD4og)
 
-## Environments and Technologies Used
+## 🛠️ Environments and Technologies Used
 
-- Raspberry Pi Device
-- Linux Terminal
-- SSH
-- VIM
-- SystemD
-- Bash Scripting
+- **Hardware:** Raspberry Pi Device
+- **Software:** 
+  - Raspberry Pi OS
+  - Linux Terminal
+  - SSH
+  - VIM
+  - VS Code
+  - Bash Scripting
+  - Python 3
 
-## Operating Systems Used
+## 💻 Operating Systems Used
 
 - Raspberry Pi OS
 - Windows 11
 
-## High-Level Deployment and Configuration Steps
+## 🚀 High-Level Deployment and Configuration Steps
 
-- **Step 1:** Set Up Raspberry Pi & Install Operating System
-- **Step 2:** Develop the Automation Script
-- **Step 3:** Configure SystemD Service and Timer
-- **Step 4:** Deploy and Monitor the Automated Service
+1. **Set Up Raspberry Pi & Install Operating System**
+2. **Develop the ETL Automation Script**
+3. **Configure SystemD Service and Timer**
+4. **Deploy and Monitor the Automated ETL Service**
+
+---
 
 # Deployment and Configuration Steps
 
-## SSH into RaspberryPi
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/297c9d8a-3c5a-4260-8c9f-cdea03dd0f78" height="80%" width="80%" alt="SSH into device over LAN"/>
-</p>
-<p>
-  Begin by connecting to your Raspberry Pi via SSH over your local network. Ensure that SSH is enabled and that you can successfully log in to your device. This remote access is crucial for managing and deploying scripts without needing a direct monitor or keyboard connection.
-</p>
-<br />
+## 🔐 SSH into Raspberry Pi
 
-## Create and Add Script to Automate the Updates
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e89687ee-23ba-4984-ae37-e8fdfbdf4042" height="80%" width="80%" alt="Script Development in VIM"/>
+  <img src="![image](https://github.com/user-attachments/assets/8c3548b9-179d-482a-b72b-3ab2a6cc2c25)
+" height="80%" width="80%" alt="SSH into device over LAN"/>
 </p>
-<p>
-  Develop your automation script using VIM or your preferred text editor. This script will handle system updates, maintenance tasks, and any other configurations you wish to automate. Ensure the script has executable permissions and is tested manually before integrating it with systemd.
-</p>
-<br />
 
-## Configure System-D Service File
+Begin by connecting to your Raspberry Pi via SSH over your local network. Ensure that SSH is enabled and that you can successfully log in to your device. This remote access is crucial for managing and deploying your ETL scripts without needing a direct monitor or keyboard connection.
+
+## 📄 Create ETL Automation Script and Shell Command. Copy and Paste into RaspberryPi
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/766c34ff-1030-44ae-b6ee-389d7bfab866" height="80%" width="80%" alt="SystemD Configuration"/>
+  <img src="![image](https://github.com/user-attachments/assets/f3499e92-a721-4005-9657-5d50e4e5541c)
+" height="80%" width="80%" alt="Script Development in VSCode"/>
 </p>
-<p>
-  Configure systemd by creating a service and timer unit file. The service file defines the script to be executed, while the timer file schedules the execution at desired intervals (e.g., every 24 hours). Use `sudo` privileges to edit these files and ensure they have the correct permissions.
-</p>
-<br />
 
-## Configure System-D Timer File
+Develop your ETL automation script using VIM or your preferred text editor. This script will handle data extraction, transformation, and loading processes. Copy and paste the entire project folder into the RaspberryPi. Ensure the script has executable permissions and is tested manually before integrating it with the RaspberryPi.
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7adaed39-1462-47de-99dc-72b10615b634" height="80%" width="80%" alt="SystemD Configuration"/>
+  <img src="![image](https://github.com/user-attachments/assets/80c57cd6-5ba1-44c4-95e9-4d60f043e1a8)
+" height="80%" width="80%" alt="Script Development in VIM"/>
 </p>
-<p>
-  Configure systemd by creating a service and timer unit file. The service file defines the script to be executed, while the timer file schedules the execution at desired intervals (e.g., every 24 hours). Use `sudo` privileges to edit these files and ensure they have the correct permissions.
-</p>
-<br />
 
-## Deploy the .service and .timer files, restart daemon, and check logs
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a79e1e0d-523c-48b0-b1f7-7a277c7a89d6" height="80%" width="80%" alt="Monitoring Service Logs"/>
-<p>
-  After deploying the service and timer, monitor the logs to verify that the automation runs as expected. Utilize `journalctl` to check for any errors and ensure that the script executes successfully at each scheduled interval. Adjust configurations as needed based on the log outputs.
-</p>
-<br />
+Add a shell command to initiate on the raspberrypi for when we setup the automation service. 
 
-# Detailed Steps
+## 📄 Make Script Executable 
+```bash
+chmod +x ~/scripts/auto_etl.sh
+```
+
+## 🛠️ Configure SystemD Service and Timer
+
+### 📂 Create the Service File
+
+![SystemD Configuration](![image](https://github.com/user-attachments/assets/3f350eb6-4f0e-490f-a19c-614257015847)
+
+Open the service file for editing:
+
+```bash
+sudo nano /etc/systemd/system/auto-etl.service
+```
+
+Add the following content:
+
+```ini
+[Unit]
+Description=Automated ETL Service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/pi/scripts/auto_etl.sh
+User=pi
+Group=pi
+Restart=on-failure
+Environment=PATH=/usr/bin:/bin
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### ⏲️ Create the Timer File
+
+![SystemD Timer Configuration](https://github.com/user-attachments/assets/e901296e-9cc2-43de-9df4-12f3f07a3a8a)
+
+Open the timer file for editing:
+
+```bash
+sudo nano /etc/systemd/system/auto-etl.timer
+```
+
+Add the following content:
+
+```ini
+[Unit]
+Description=Run ETL Service Every 3 Days
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=3d
+Unit=auto-etl.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+### 🔄 Reload SystemD and Enable Timer
+
+Reload systemd to recognize the new unit files:
+
+```bash
+sudo systemctl daemon-reload
+```
+
+Enable the timer to start on boot:
+
+```bash
+sudo systemctl enable auto-etl.timer
+```
+
+Start the timer immediately:
+
+```bash
+sudo systemctl start auto-etl.timer
+```
+
+## 📈 Deploy and Monitor the Automated ETL Service
+
+![Monitoring Service Logs](https://github.com/user-attachments/assets/515aee56-3538-474c-9b11-7d33fd5c56d1)
+
+### Check Timer Status
+
+```bash
+systemctl status auto-etl.timer
+```
+
+### Check Service Logs
+
+```bash
+journalctl -u auto-etl.service -f
+```
+
+### Review Script Logs
+
+```bash
+cat /home/pi/logs/auto_etl.log
+```
+
+### List All Timers
+
+```bash
+sudo systemctl list-timers --all
+```
+
+## 📜 Detailed Steps
 
 ### Step 1: Set Up Raspberry Pi & Install Operating System
-<p>
-  - Download the latest Raspberry Pi OS image.<br />
-  - Use tools like Balena Etcher to flash the OS onto your SD card.<br />
-  - Insert the SD card into your Raspberry Pi and boot up.<br />
-  - Connect to your network via Ethernet or Wi-Fi.<br />
-  - Enable SSH by creating an empty `ssh` file in the boot partition.<br />
-</p>
-<br />
 
-### Step 2: Develop the Automation Script
-<p>
-  - ** Create a directory for your scripts: **<br />
-    <code>mkdir -p ~/scripts</code><br />
-  - **Create and edit your automation script:**<br />
-    <code>nano ~/scripts/auto_update.sh</code><br />
-  - **Add the following content:**<br />
-  
-    ```bash
-    #!/usr/bin/env bash
+1. Download the latest Raspberry Pi OS image
+2. Use tools like Balena Etcher to flash the OS onto your SD card
+3. Insert the SD card into your Raspberry Pi and boot up
+4. Connect to your network via Ethernet or Wi-Fi
+5. Enable SSH by creating an empty ssh file in the boot partition
 
-    LOGFILE="/home/pi/logs/auto_update.log"
+### Step 2: Develop the ETL Automation Script
 
-    echo "===== Auto-Update Script Started at $(date) =====" >> "$LOGFILE"
+Create a directory for your scripts:
 
-    # Update package lists
-    sudo apt-get update -y >> "$LOGFILE" 2>&1
+```bash
+mkdir -p ~/scripts
+```
 
-    # Upgrade installed packages
-    sudo apt-get upgrade -y >> "$LOGFILE" 2>&1
+Create and edit your ETL automation script:
 
-    # Remove unused packages
-    sudo apt-get autoremove -y >> "$LOGFILE" 2>&1
+```bash
+nano ~/scripts/auto_etl.sh
+```
 
-    # Disk usage
-    echo "Disk Usage:" >> "$LOGFILE"
-    df -h >> "$LOGFILE" 2>&1
+Make the script executable:
 
-    # Memory usage
-    echo "Memory Usage:" >> "$LOGFILE"
-    free -h >> "$LOGFILE" 2>&1
-
-    echo "===== Auto-Update Script Finished at $(date) =====" >> "$LOGFILE"
-    echo "" >> "$LOGFILE"
-    ```
-  - **Make the script executable:**<br />
-    <code>chmod +x ~/scripts/auto_update.sh</code><br />
-</p>
-<br />
+```bash
+chmod +x ~/scripts/auto_etl.sh
+```
 
 ### Step 3: Configure SystemD Service and Timer
-<p>
-  <strong>Create the Service File:</strong><br />
-  
-  - **Open the service file for editing:**<br />
-  
-    <code>sudo nano /etc/systemd/system/auto-update.service</code><br />
-    
-  - **Add the following content:**<br />
-    
-  ```ini
-    [Unit]
-    Description=Auto Update Raspberry Pi
-    After=network.target
 
-    [Service]
-    Type=oneshot
-    ExecStart=/home/pi/scripts/auto_update.sh
-    User=pi #or your specific username
-    Group=pi #or your specific group
-    Restart=on-failure
-    Environment=PATH=/usr/bin:/bin
+Follow the configuration steps outlined above for creating and enabling the service and timer files.
 
-    [Install]
-    WantedBy=multi-user.target
+### Step 4: Deploy and Monitor the Automated ETL Service
 
-```
-  - **Save and exit.**<br /><br />
+Follow the monitoring steps outlined above to ensure proper operation of your automated ETL service.
 
-  <strong>Create the Timer File:</strong><br />
-  - **Open the timer file for editing:**<br />
-    <code>sudo nano /etc/systemd/system/auto-update.timer</code><br />
-  - **Add the following content:**<br />
-    ```ini
-    [Unit]
-    Description=Run auto-update service every 24 hours
+## 🏁 Conclusion
 
-    [Timer]
-    OnBootSec=5min
-    OnUnitActiveSec=24h
-    Unit=auto-update.service
+By following this tutorial, you have successfully automated your ETL processes on a Raspberry Pi using systemd services and timers. This setup ensures that your data extraction, transformation, and loading tasks run reliably at scheduled intervals without manual intervention. Leveraging the power of Raspberry Pi OS and systemd provides a robust and cost-effective automation solution for your data workflows.
 
-    [Install]
-    WantedBy=timers.target
-    ```
-  - **Save and exit.**<br /><br />
 
-  <strong>Enable and Start the Timer:</strong><br />
-  - **Reload systemd to recognize the new unit files:**<br />
-    <code>sudo systemctl daemon-reload</code><br />
-  - **Enable the timer to start on boot:**<br />
-    <code>sudo systemctl enable auto-update.timer</code><br />
-  - **Start the timer immediately:**<br />
-    <code>sudo systemctl start auto-update.timer</code><br />
-</p>
-<br />
 
-### Step 4: Deploy and Monitor the Automated Service
-<p>
-  
-  **Check Timer Status:**<br />
-    <code>systemctl status auto-update.timer</code><br />
-    Ensure it is active and the next run time is correct.<br /><br />
 
-  **Check Service Logs:**<br />
-    <code>journalctl -u auto-update.service -f</code><br />
-    Monitor real-time logs to verify successful execution.<br /><br />
 
-  **Review Script Logs:**<br />
-    <code>cat /home/pi/logs/auto_update.log</code><br />
-    Confirm that updates and system checks are being logged as expected.<br /><br />
 
-  **Troubleshoot Issues:**<br />
-    If the service fails to execute, check the following:<br />
-    - Correct script path and permissions.<br />
-    - Proper user and group settings in the service file.<br />
-    - Environment variables and PATH settings.<br />
-    - Any errors in the script itself.
-</p>
-<br />
-
-## Conclusion
-
-By following this tutorial, you have successfully automated system updates and checks on your Raspberry Pi using systemd services and timers. This setup ensures your device remains up-to-date and monitored without manual intervention, providing a reliable and efficient automation solution.
